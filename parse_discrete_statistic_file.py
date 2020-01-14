@@ -25,7 +25,7 @@ f_meta.close()
 
 ## 2045_CDF    user_recoms_log {'v1': [0.02], 'v2':[..., .., .., ]}
 
-f_statistic = open("./d-2019-09-04.json/part-00000", "r")
+f_statistic = open("./d-2019-11-25.json/part-00000", "r")
 
 for line in f_statistic:
     line = line.strip()
@@ -40,6 +40,7 @@ for key in statistic_dict:
     fea_id = key_arr[0]
     fea_id = fea_id.split("-")[0]
 
+    fea_len = 0
     if fea_id not in feature_dict:
         continue
     fea_name = feature_dict[fea_id][0]
@@ -50,11 +51,13 @@ for key in statistic_dict:
         if "v1" not in value or "v2" not in value:
             print ("not find v1, or v2")
             continue
+        if "WordCount" in key:
+            fea_len = len(value["v1"])
         v1_key_list = value["v1"]
         v2_value_list = value["v2"]
         statistic_dict[key]["v1"] = v1_key_list[:10]
         statistic_dict[key]["v2"] = v2_value_list[:10]
-    fea_tuple = (key, fea_name, statistic_dict[key])
+    fea_tuple = (key, fea_name, fea_len, statistic_dict[key])
     out_list.append(fea_tuple)
 
 

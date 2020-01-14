@@ -30,7 +30,7 @@ f_meta.close()
 
 ## 2045_CDF    user_recoms_log {'v1': [0.02], 'v2':[..., .., .., ]}
 
-f_statistic = open("./m-1c-d-2019-11-25.json", "r")
+f_statistic = open("./m-1c-d-2019-11-13.json", "r")
 
 statistic_dict = json.load(f_statistic)
 
@@ -46,7 +46,6 @@ for key in statistic_dict:
         continue
     fea_name = feature_dict[fea_id][0]
     has_fid_set.add(fea_id)
-
     if "CDF" in key or "WordCount" in key:
         value = statistic_dict[key]
         if "v1" not in value or "v2" not in value:
@@ -54,11 +53,14 @@ for key in statistic_dict:
             continue
         if "WordCount" in key:
             fea_len = len(value["v1"])
+            if fea_len > 1:
+                continue
         v1_key_list = value["v1"]
         v2_value_list = value["v2"]
         statistic_dict[key]["v1"] = v1_key_list[:10]
         statistic_dict[key]["v2"] = v2_value_list[:10]
-
+    if fea_len != 1:
+        continue
     fea_tuple = (key, fea_name, fea_len, statistic_dict[key])
     out_list.append(fea_tuple)
 

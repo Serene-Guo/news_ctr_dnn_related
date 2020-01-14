@@ -11,10 +11,24 @@ embed_history="./feature_conf.json.add.user.click.history"
 embed_gff = "./guofangfang_test_no_timestamp_feature_conf.json"
 
 embed_bai = "./bai_feature_conf.json"
+
+
+embed_gff= "./guofangfang_test_no_timestamp_V1_feature_conf.json"
+embed_CQ = "./history0819_CQ_feature_conf.json"
+
+embed_v3 = "./hourly_earliest_V3_feature_conf.json"
+embed_cq_1 = "./all_feature_CQ_1_feature_conf.json"
 #layers= [512, 256, 128]
+
+small_embed = "./small_embed.json"
+small_embed2 = "./small_embed_0923.json"
+
+new_gauc_fea = "./gauc_base_feature_conf.json"
+old_gauc_fea = "./old_gauc_base_feature_conf.json"
+
 layers= [1024, 512, 256]
 
-embed_file = embed_bai
+embed_file = old_gauc_fea
 #embed_file = embed_8_32
 #embed_file = embed_4_32
 

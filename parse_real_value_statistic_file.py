@@ -25,7 +25,7 @@ f_meta.close()
 
 ## 2045_CDF    user_recoms_log {'v1': [0.02], 'v2':[..., .., .., ]}
 
-f_statistic = open("./c-1-s001-2019-09-03.json/part-00000", "r")
+f_statistic = open("./c-1-s001-2019-11-27.json/part-00000", "r")
 
 for line in f_statistic:
     line = line.strip()

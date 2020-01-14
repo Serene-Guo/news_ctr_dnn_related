@@ -11,13 +11,15 @@ target_dir="hdfs://hz-cluster9/user/portal/ODM/RECOMMEND/recsys2_pctr/toutiao/tx
 dnn_sample_pb_gauc="hdfs://hz-cluster9/user/portal/ODM/RECOMMEND/recsys2_pctr/toutiao/txt/guofangfang/test_gauc_deep_sample_pb/"
 
 
+train_data_dir=${dnn_sample_pb}
+target_dir=${dnn_sample_pb_gauc}
 
 
 date_time=`date -d ""`
 
-date_str="2019-09-23"
+date_str="2019-09-10"
 
-while [ $date_str != "2019-09-30" ]
+while [ $date_str != "2019-09-23" ]
 do
     echo "start copy ${date_str}"
     ${hadoop_bin} fs -mkdir ${target_dir}/${date_str}

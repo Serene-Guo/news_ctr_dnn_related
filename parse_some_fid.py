@@ -33,6 +33,10 @@ f_meta.close()
 f_statistic = open("./m-1c-d-2019-11-25.json", "r")
 
 statistic_dict = json.load(f_statistic)
+fid = '2128'
+threshold = 78
+target_fid = [fid]
+dict_key = fid + "_WordCount"
 
 out_list = []
 has_fid_set = set()
@@ -46,30 +50,44 @@ for key in statistic_dict:
         continue
     fea_name = feature_dict[fea_id][0]
     has_fid_set.add(fea_id)
-
+    if fea_id not in target_fid:
+        continue
     if "CDF" in key or "WordCount" in key:
         value = statistic_dict[key]
         if "v1" not in value or "v2" not in value:
             print ("not find v1, or v2")
             continue
-        if "WordCount" in key:
-            fea_len = len(value["v1"])
         v1_key_list = value["v1"]
         v2_value_list = value["v2"]
-        statistic_dict[key]["v1"] = v1_key_list[:10]
-        statistic_dict[key]["v2"] = v2_value_list[:10]
-
+        #if "WordCount" in key:
+        #    ### sort revert
+        #statistic_dict[key]["v1"] = v1_key_list[:10]
+        #statistic_dict[key]["v2"] = v2_value_list[:10]
+        if dict_key not in key:
+            continue
+        for i in range(len(v2_value_list)):
+            if v2_value_list[i] <= threshold:
+                continue
+            #v1.append(v1_key_list[i])
+            #v2.append(v2_value_list[i])
+            try:
+                print (v1_key_list[i] + "\t" + str(v2_value_list[i]))
+            except Exception as e:
+                print ("error")
+                print (v1_key_list[i])
+                print (v2_value_list[i])
+                print ("error done.")
     fea_tuple = (key, fea_name, fea_len, statistic_dict[key])
     out_list.append(fea_tuple)
 
 
 a = sorted(out_list, key= lambda x:x[0])
 
-for i in a:
-    print ("\t".join([str(x) for x in i]))
+#for i in a:
+#    print ("\t".join([str(x) for x in i]))
 
 
-for i in feature_dict:
-    if i not in has_fid_set:
-        name = feature_dict[i][0]
-        print ("%s\t%s\tnot in feature_statistic_file" % (i, name))
+#for i in feature_dict:
+#    if i not in has_fid_set:
+#        name = feature_dict[i][0]
+#        print ("%s\t%s\tnot in feature_statistic_file" % (i, name))

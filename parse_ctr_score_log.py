@@ -2,10 +2,11 @@ import os
 from os import listdir
 import json
 
-files = listdir("./11/")
+input_dir = "./13/"
+files = listdir(input_dir)
 
 for file_name in files:
-    f_in = open("./11/" + file_name)
+    f_in = open(input_dir + file_name)
     for line in f_in:
         line = line.strip()
         json_dict = json.loads(line)
@@ -35,6 +36,9 @@ for file_name in files:
                     is_ctr_rec = "1" if doc_info_dict["isCtrRec"] else "0"
                 if "ctrScore" in doc_info_dict:
                     score_f = doc_info_dict["ctrScore"]
-                    score_f = float("%.5f" % score_f)
-                    score = str(score_f)
+                    try:
+                        score_f = float("%.5f" % score_f)
+                        score = str(score_f)
+                    except Exception as e:
+                        pass
                 print ("\t".join([id_, label, score, model, is_ctr_rec, user, devid]))

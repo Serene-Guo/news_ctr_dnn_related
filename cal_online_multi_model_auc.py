@@ -63,9 +63,10 @@ with open(file_name, 'r') as r:
         uids.append(uid)
         labels.append(int(label))
         scores.append(float(score))
+        auc_dict[model_name] = uids, labels, scores
 
+print ("\t".join(["model", "auc", "gauc", "total_sample_num", "total_uid_num", "gauc_sample_num", "gauc_uid_num"]))
 for model in auc_dict:
-    print ("\t".join(["model", "auc", "gauc", "total_sample_num", "total_uid_num", "gauc_sample_num", "gauc_uid_num"]))
     uids, labels, scores = auc_dict[model]
 
     auc = roc_auc_score(labels, scores)

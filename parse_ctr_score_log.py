@@ -2,7 +2,7 @@ import os
 from os import listdir
 import json
 
-input_dir = "./13/"
+input_dir = "./21/"
 files = listdir(input_dir)
 
 for file_name in files:

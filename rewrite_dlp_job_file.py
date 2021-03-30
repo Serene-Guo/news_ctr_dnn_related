@@ -27,8 +27,8 @@ def rewrite_file(source_file, target_file, new_cmd, new_branch):
             new_git_line = git_arr[0] + "#" + new_branch
             f_out.write(new_git_line + "\n")
             continue
-        if "name =" in line or "name=" in line:
-            len_new_branch = len(new_branch)
+        if ("name =" in line or "name=" in line) and "nagent_cluster_name" not in line:
+            len_new_branch = len(new_branch) 
             start_index = 0
             if len_new_branch > 25:
                 start_index = len_new_branch - 25

@@ -19,7 +19,7 @@ cmd="python3 hz_gen_sample.py --upload_path=${upload_path} --output_partition=20
 
 echo "${cmd}"
 
-dir_path="/home/recsys/guofangfang/dlp_qingzhou/gen_sample_ini_files/"
+dir_path="/home/recsys/guofangfang/dlp/gen_sample_ini_files/"
 source_file_name="${dir_path}/hourly_gen_sample.ini"
 target_file_name="${dir_path}/${upload_path}_${date_str}-${tmp_hour_str}_hourly_gen_sample.ini"
 

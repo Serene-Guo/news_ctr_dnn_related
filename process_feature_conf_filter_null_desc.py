@@ -2,11 +2,19 @@ import os
 
 import json
 
+### support old ctr_framework, and recml feature_conf.json
+
 f_fea_in = "./feature_confs/feature_conf.dc-20-adam.json"
 f_out_name = "./feature_confs/wjh_feature_clean.json"
 
+f_fea_in = './feature_confs/old_frame_new_data_0309_feature_conf.json'
+f_out_name = './feature_confs/old_frame_new_data_filter_null_desc.json'
 
+f_fea_in = 'feature_confs/recml_clkhis_feature_conf.json'
+f_out_name = './feature_confs/recml_clkhis_feature_conf_filter_null_desc.json'
 
+f_fea_in = 'feature_confs/old_frame_feature_conf.json'
+f_out_name = 'feature_confs/old_frame_filter_null.json'
 #f_fea_in = "./feature_confs/feature_conf_gff.json"
 #f_out_name = "./feature_confs/gff_feature_clean.json"
 
